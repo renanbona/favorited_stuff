@@ -3,6 +3,8 @@
 module Api
   module V1
     class ThingsController < ApplicationController
+      skip_before_action :verify_authenticity_token
+
       def index
         @things = Thing.all
 
@@ -23,6 +25,13 @@ module Api
         else
           render json: { error: thing.errors.messages }, status: 422
         end
+      end
+
+      def destroy
+        @thing = Thing.find_by(slug: params[:slug])
+        @thing.destroy
+
+        render json: :no_content
       end
 
       private

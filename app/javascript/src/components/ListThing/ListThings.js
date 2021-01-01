@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Thing from '../Thing/Thing'
+import Thing from './Thing'
 import styled from 'styled-components'
 
 const Home = styled.div`
